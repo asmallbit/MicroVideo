@@ -1,0 +1,5 @@
+/target
+/src/main/java/edu/hhu/hanjianwei/test
+/src/test
+/.idea
+/src/main/resources/druid.properties
