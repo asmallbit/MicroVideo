@@ -13,22 +13,23 @@ import java.io.IOException;
 
 /**
  * @author <a href="mail to: im.jianweihan@gmail.com" rel="nofollow">jwhan</a>
- * @date 10/26/2022 - 10:33 AM
+ * @date 10/26/2022 - 6:43 PM
  */
-@WebServlet("/videoDetail")
-public class VideoDetailController extends HttpServlet {
-    final private VideoService videoService = new VideoServiceImpl();
+@WebServlet("/watchVideo")
+public class VideoPlayController extends HttpServlet {
+    private final VideoService videoService = new VideoServiceImpl();
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final int id = Integer.parseInt(req.getParameter("id"));
         final Video video = videoService.queryById(id);
-        if ("true".equals(req.getParameter("user"))) {
-            req.setAttribute("video", video);
-            req.getRequestDispatcher("/user/video/detail.jsp").forward(req, resp);
-            return;
-        }
-        req.setAttribute("video", video);
-        req.getRequestDispatcher("/admin/video/detail.jsp").forward(req, resp);
+        // 存储视频和封面地址
+        String[] values = new String[]{
+                "/video_source" + video.getVideoPath(),
+                "/cover_source" + video.getCoverPath(),
+                video.getName()
+        };
+        req.setAttribute("play", values);
+        req.getRequestDispatcher("/user/video/play.jsp").forward(req, resp);
     }
 }

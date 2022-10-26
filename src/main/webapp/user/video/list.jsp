@@ -93,7 +93,7 @@
                             <a class="btn btn-info btn-xs"
                                href="${pageContext.request.contextPath}/watchVideo?id=${video.id}">播放</a>
                             <a class="btn btn-warning btn-xs"
-                               href="${pageContext.request.contextPath}/videoDetail?id=${video.id}">明细</a>
+                               href="${pageContext.request.contextPath}/videoDetail?id=${video.id}&user=true">明细</a>
                         </td>
                     </tr>
                 </c:forEach>
