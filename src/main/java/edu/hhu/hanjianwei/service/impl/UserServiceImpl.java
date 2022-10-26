@@ -28,4 +28,9 @@ public class UserServiceImpl implements UserService {
     public List<User> queryAllUsers() {
         return userDao.selectAllUsers();
     }
+
+    @Override
+    public int modifyUser(User user) {
+        return userDao.updateUser(user);
+    }
 }

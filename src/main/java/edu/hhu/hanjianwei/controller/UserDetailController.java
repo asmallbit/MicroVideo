@@ -23,6 +23,6 @@ public class UserDetailController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = userService.queryUser(req.getParameter("id"));
         req.setAttribute("userDetail", user);
-        req.getRequestDispatcher("/admin/userDetails.jsp").forward(req, resp);
+        req.getRequestDispatcher("/admin/user/userDetails.jsp").forward(req, resp);
     }
 }

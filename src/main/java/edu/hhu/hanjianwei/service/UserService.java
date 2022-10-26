@@ -14,4 +14,6 @@ public interface UserService {
     int addUser(User user);
 
     List<User> queryAllUsers();
+
+    int modifyUser(User user);
 }

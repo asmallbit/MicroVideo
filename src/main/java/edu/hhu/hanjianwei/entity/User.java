@@ -18,11 +18,23 @@ public class User {
     private String phone;
     private String email;
     private String description;
+    private String realAccount; // 用来解决修改account的问题
 
     public User() {
     }
 
-    public User(String nickName, String account, String password, boolean gender, Date birthday, String phone, String email, String description) {
+    public User(String account, String nickName, String password, boolean gender, Date birthday, String phone, String email, String description) {
+        this.account = account;
+        this.nickName = nickName;
+        this.password = password;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.phone = phone;
+        this.email = email;
+        this.description = description;
+    }
+
+    public User(String nickName, String account, String password, boolean gender, Date birthday, String phone, String email, String description, String realAccount) {
         this.nickName = nickName;
         this.account = account;
         this.password = password;
@@ -31,6 +43,7 @@ public class User {
         this.phone = phone;
         this.email = email;
         this.description = description;
+        this.realAccount = realAccount;
     }
 
     public String getNickName() {
@@ -95,5 +108,13 @@ public class User {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getRealAccount() {
+        return realAccount;
+    }
+
+    public void setRealAccount(String realAccount) {
+        this.realAccount = realAccount;
     }
 }

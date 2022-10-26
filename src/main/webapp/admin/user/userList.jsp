@@ -50,7 +50,7 @@
                     <td>手机号码</td>
                     <td>电子邮箱</td>
                 </tr>
-                <c:forEach var="user" items="${requestScope.users}" varStatus="status">
+                <c:forEach var="user" items="${sessionScope.users}" varStatus="status">
                     <tr>
                             <%--<td>${status.count}</td>--%>
                             <%--此处显示的id并非真正的数据库中的主键id, 这么做的原因只是为了避免数据库中删除造成id混乱不按次序--%>
@@ -68,7 +68,7 @@
                             <a class="btn btn-info btn-xs"
                                href="${pageContext.request.contextPath}/userDetail?id=${user.account}">明细</a>
                             <a class="btn btn-warning btn-xs"
-                               href="${pageContext.request.contextPath}/userToModify?id=${user.account}">修改</a>
+                               href="${pageContext.request.contextPath}/userModify?id=${user.account}">修改</a>
                             <a class="btn btn-danger btn-xs"
                                href="${pageContext.request.contextPath}/userRemove?id=${user.account}"
                                onclick="return confirm('确定删除此用户吗?')">删除</a>

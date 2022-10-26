@@ -59,4 +59,20 @@ public class UserDaoImpl implements UserDao {
         }
         return users;
     }
+
+    @Override
+    public int updateUser(User user) {
+        String sql = "UPDATE t_user SET account = ?, nick_name = ?, password = ?, " +
+                "gender = ?, birthday = ?, phone = ?, email = ?, description = ? " +
+                "WHERE account = ?";
+        Object[] params = {user.getAccount(), user.getNickName(), user.getPassword(),
+                user.isGender(), user.getBirthday(), user.getPhone(), user.getEmail(),
+                user.getDescription(), user.getRealAccount()};
+        try {
+            return queryRunner.update(sql, params);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }

@@ -24,7 +24,7 @@ public class UserListController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<User> users = userService.queryAllUsers();
         // 返回到用户展示页面
-        req.setAttribute("users", users);
-        req.getRequestDispatcher("/admin/userList.jsp").forward(req, resp);
+        req.getSession().setAttribute("users", users);
+        req.getRequestDispatcher("/admin/user/userList.jsp").forward(req, resp);
     }
 }
