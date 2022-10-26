@@ -75,7 +75,7 @@
                         %>
                         <td>
                             <img src="${pageContext.request.contextPath}/cover_source/${video.coverPath}" alt="暂时无法显示"
-                                 width="150" height="150"/>
+                                 width="60" height="80"/>
                         </td>
                         <td>${video.name}</td>
                         <td>${video.author}</td>

@@ -5,6 +5,8 @@ import edu.hhu.hanjianwei.dao.impl.UserDaoImpl;
 import edu.hhu.hanjianwei.entity.User;
 import edu.hhu.hanjianwei.service.UserService;
 
+import java.util.List;
+
 /**
  * @author <a href="mail to: im.jianweihan@gmail.com" rel="nofollow">jwhan</a>
  * @date 10/26/2022 - 3:36 PM
@@ -22,4 +24,8 @@ public class UserServiceImpl implements UserService {
         return userDao.insertUser(user);
     }
 
+    @Override
+    public List<User> queryAllUsers() {
+        return userDao.selectAllUsers();
+    }
 }

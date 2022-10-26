@@ -5,8 +5,10 @@ import edu.hhu.hanjianwei.entity.User;
 import edu.hhu.hanjianwei.util.JDBCUtil;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @author <a href="mail to: im.jianweihan@gmail.com" rel="nofollow">jwhan</a>
@@ -43,5 +45,18 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    @Override
+    public List<User> selectAllUsers() {
+        String sql = "SELECT account, nick_name as nickName, password, " +
+                "gender, birthday, phone, email, description FROM t_user";
+        List<User> users = null;
+        try {
+            users = queryRunner.query(sql, new BeanListHandler<>(User.class));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 }
