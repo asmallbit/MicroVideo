@@ -8,4 +8,6 @@ import edu.hhu.hanjianwei.entity.User;
  */
 public interface UserDao {
     User queryByAccount(String account);
+
+    int insertUser(User user);
 }

@@ -8,4 +8,7 @@ import edu.hhu.hanjianwei.entity.User;
  */
 public interface UserService {
     User queryUser(String account);
+
+    int addUser(User user);
+
 }

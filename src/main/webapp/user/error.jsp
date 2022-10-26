@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: jwhan
-  Date: 10/24/2022
-  Time: 3:59 PM
+  Date: 10/26/2022
+  Time: 5:32 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,8 +14,9 @@
 <div class="container" style="margin-top: 30px">
     <div class="row">
         <div class="col-md-12" align="center" style="margin-top: 30px">
-            <h3>对不起, 登陆失败, 请检查您的账户是否存在或者密码是否正确, 请重新<a href="${pageContext.request.contextPath}/user/login.jsp">登陆</a>!
-            </h3>
+            <h3>${requestScope.error}</h3>
+            <input class="btn btn-info" type="button" onclick="history.back()"
+                   value="返回上一页"/>
         </div>
     </div>
 </div>

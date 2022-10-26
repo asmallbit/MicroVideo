@@ -43,9 +43,9 @@
                 <div class="form-group">
                     <div class="col-md-3"></div>
                     <div class="col-md-6" style="text-align: center">
-                        <input class="btn btn-success" type="submit" value="登陆"/>
-                        <%--TODO: 忘记密码实现--%>
-                        <input class="btn btn-info" style="margin-left: 20px" type="reset" value="忘记密码"/>
+                        <input class="btn btn-success" type="submit" value="提交"/>
+                        <a href="signup.jsp"><input class="btn btn-info" style="margin-left: 20px" type="button"
+                                                    value="注册"/></a>
                     </div>
                     <div class="col-md-3"></div>
                 </div>

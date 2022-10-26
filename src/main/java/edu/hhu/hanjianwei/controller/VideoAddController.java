@@ -51,7 +51,7 @@ public class VideoAddController extends HttpServlet {
                 // 如果是普通文本
                 if (fileItem.isFormField()) {
                     String name = fileItem.getFieldName();
-                    String value = fileItem.getString();
+                    String value = fileItem.getString("UTF-8");
                     if (name.equals("name")) {
                         video.setName(value);
                     } else if (name.equals("author")) {

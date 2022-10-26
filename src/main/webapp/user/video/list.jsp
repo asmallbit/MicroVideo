@@ -16,7 +16,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>后台视频列表页面</title>
+    <title>视频列表页面</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
@@ -35,7 +35,7 @@
         <div class="col-md-10">
         </div>
         <div class="col-md-2">
-            ${sessionScope.admin.name}
+            欢迎您, ${sessionScope.user.account}
         </div>
     </div>
     <%
@@ -44,14 +44,13 @@
         List<Video> videoList = videoService.queryAll();
     %>
     <div class="row" style="margin-top: 20px">
-        <div class="col-md-2">
-            <a href="${pageContext.request.contextPath}/userList">用户管理</a>
-            <br><br>
-            <a href="${pageContext.request.contextPath}/videoList">视频管理</a>
+        <div class="col-md-1">
+            <%-- TODO: 观影记录--%>
+            <%-- <a href="${pageContext.request.contextPath}/userList">用户管理</a>--%>
+            <%--            <br><br>--%>
+            <%--            <a href="${pageContext.request.contextPath}/videoList">视频管理</a>--%>
         </div>
         <div class="col-md-10">
-            <a href="${pageContext.request.contextPath}/admin/video/add.jsp" class="btn btn-info"
-               style="margin-bottom: 10px">添加视频</a>
             <table class="table table-striped table-bordered table-hover">
                 <tr>
                     <td>序号</td>
@@ -92,12 +91,15 @@
                         <td>${video.timeLength}</td>
                         <td>
                             <a class="btn btn-info btn-xs"
-                               href="${pageContext.request.contextPath}/watchVideo?id=${video.id}">观看</a>
+                               href="${pageContext.request.contextPath}/watchVideo?id=${video.id}">播放</a>
+                            <a class="btn btn-warning btn-xs"
+                               href="${pageContext.request.contextPath}/videoDetail?id=${video.id}">明细</a>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
         </div>
+        <div class="col-md-1"></div>
     </div>
 </div>
 </body>

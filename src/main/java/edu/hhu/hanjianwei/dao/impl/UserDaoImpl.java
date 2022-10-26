@@ -28,4 +28,20 @@ public class UserDaoImpl implements UserDao {
         }
         return user;
     }
+
+    @Override
+    public int insertUser(User user) {
+        String sql = "INSERT INTO t_user (account, nick_name, password, " +
+                "gender, birthday, phone, email, description) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        Object[] params = new Object[]{user.getAccount(), user.getNickName(),
+                user.getPassword(), user.isGender(), user.getBirthday(),
+                user.getPhone(), user.getEmail(), user.getDescription()};
+        try {
+            return queryRunner.update(sql, params);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }
