@@ -1,8 +1,12 @@
-<%--
+<%@ page import="edu.hhu.hanjianwei.entity.User" %>
+<%@ page import="edu.hhu.hanjianwei.entity.Video" %>
+<%@ page import="edu.hhu.hanjianwei.service.VideoService" %>
+<%@ page import="edu.hhu.hanjianwei.service.impl.VideoServiceImpl" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: jwhan
-  Date: 10/25/2022
-  Time: 9:47 AM
+  Date: 10/26/2022
+  Time: 3:43 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
@@ -34,6 +38,11 @@
             ${sessionScope.admin.name}
         </div>
     </div>
+    <%
+        // 获取movie列表
+        VideoService videoService = new VideoServiceImpl();
+        List<Video> videoList = videoService.queryAll();
+    %>
     <div class="row" style="margin-top: 20px">
         <div class="col-md-2">
             <a href="${pageContext.request.contextPath}/userList">用户管理</a>
@@ -64,7 +73,7 @@
                 <%--                        <a class="btn btn-danger btn-xs" href="#">删除</a>--%>
                 <%--                    </td>--%>
                 <%--                </tr>--%>
-                <c:forEach var="video" items="${requestScope.videoList}" varStatus="status">
+                <c:forEach var="video" items="<%=videoList%>" varStatus="status">
                     <tr>
                             <%--<td>${status.count}</td>--%>
                             <%--此处显示的id并非真正的数据库中的主键id, 这么做的原因只是为了避免数据库中删除造成id混乱不按次序--%>
@@ -83,12 +92,7 @@
                         <td>${video.timeLength}</td>
                         <td>
                             <a class="btn btn-info btn-xs"
-                               href="${pageContext.request.contextPath}/videoDetail?id=${video.id}">明细</a>
-                            <a class="btn btn-warning btn-xs"
-                               href="${pageContext.request.contextPath}/videoToModify?id=${video.id}">修改</a>
-                            <a class="btn btn-danger btn-xs"
-                               href="${pageContext.request.contextPath}/videoRemove?id=${video.id}"
-                               onclick="return confirm('确定删除吗?')">删除</a>
+                               href="${pageContext.request.contextPath}/watchVideo?id=${video.id}">观看</a>
                         </td>
                     </tr>
                 </c:forEach>

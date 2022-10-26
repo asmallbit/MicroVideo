@@ -25,7 +25,6 @@ public class VideoListController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Video> videoList = videoService.queryAll();
         req.setAttribute("videoList", videoList);
-//        resp.sendRedirect("/admin/video/list.jsp"); // 相应重定向
         req.getRequestDispatcher("/admin/video/list.jsp").forward(req, resp);
     }
 }

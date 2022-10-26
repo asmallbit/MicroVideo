@@ -15,22 +15,21 @@ drop table if exists t_video;
 /*==============================================================*/
 create table t_user
 (
-    id          int not null auto_increment,
-    nick_name   varchar(32),
     account     varchar(32),
+    nick_name   varchar(32),
     password    varchar(32),
     gender      boolean,
     birthday    date,
     phone       varchar(16),
     email       varchar(64),
     description text,
-    primary key (id)
+    primary key (account)
 );
 
 ALTER TABLE t_user
     COMMENT '用户表';
 INSERT INTO t_user
-VALUES (1, '张三', 'zhangsan', '123', true, '2002-10-10', '13966668888', 'zhangsan@gmail.com', '张三');
+VALUES ( 'zhangsan', '张三', '123', true, '2002-10-10', '13966668888', 'zhangsan@gmail.com', '张三');
 
 /*==============================================================*/
 /* Table: t_admin                                               */
