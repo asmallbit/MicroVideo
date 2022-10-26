@@ -12,4 +12,10 @@ public interface VideoService {
     List<Video> queryAll();
 
     int addVideo(Video video);
+
+    int removeVideo(int id);
+
+    Video queryById(int id);
+
+    int modifyVideo(Video video);
 }

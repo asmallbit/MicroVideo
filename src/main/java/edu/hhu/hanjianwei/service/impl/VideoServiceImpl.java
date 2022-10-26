@@ -23,4 +23,19 @@ public class VideoServiceImpl implements VideoService {
     public int addVideo(Video video) {
         return videoDao.insertVideo(video);
     }
+
+    @Override
+    public int removeVideo(int id) {
+        return videoDao.deleteById(id);
+    }
+
+    @Override
+    public Video queryById(int id) {
+        return videoDao.selectById(id);
+    }
+
+    @Override
+    public int modifyVideo(Video video) {
+        return videoDao.update(video);
+    }
 }

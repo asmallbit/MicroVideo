@@ -10,5 +10,12 @@ import java.util.List;
  */
 public interface VideoDao {
     List<Video> selectAll();
+
     int insertVideo(Video video);
+
+    int deleteById(int id);
+
+    Video selectById(int id);
+
+    int update(Video video);
 }

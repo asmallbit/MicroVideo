@@ -4,9 +4,11 @@ import edu.hhu.hanjianwei.dao.VideoDao;
 import edu.hhu.hanjianwei.entity.Video;
 import edu.hhu.hanjianwei.util.JDBCUtil;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -46,4 +48,46 @@ public class VideoDaoImpl implements VideoDao {
         }
         return -1;
     }
+
+    @Override
+    public int deleteById(int id) {
+        String sql = "DELETE FROM t_video WHERE id = ?";
+        try {
+            return queryRunner.update(sql, id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    @Override
+    public Video selectById(int id) {
+        String sql = "SELECT id, name, author, type, create_time as createTime, time_length as timeLength, "
+                + "video_path as videoPath, cover_path as coverPath, description "
+                + "from t_video WHERE id = ?";
+        Video video = null;
+        try {
+            video = queryRunner.query(sql, new BeanHandler<>(Video.class), id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return video;
+    }
+
+    @Override
+    public int update(Video video) {
+        String sql = "UPDATE t_video SET name = ?, author = ?, type = ?, create_time = ?, " +
+                "time_length = ?, description = ?" +
+                "WHERE id = ?";
+        Object[] paramArray = {video.getName(), video.getAuthor(), video.getType(),
+                video.getCreateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
+                String.valueOf(video.getTimeLength()), video.getDescription(), video.getId()};
+        try {
+            return queryRunner.update(sql, paramArray);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
 }

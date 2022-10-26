@@ -67,6 +67,7 @@
                 <c:forEach var="video" items="${requestScope.videoList}" varStatus="status">
                     <tr>
                             <%--<td>${status.count}</td>--%>
+                            <%--此处显示的id并非真正的数据库中的主键id, 这么做的原因只是为了避免数据库中删除造成id混乱不按次序--%>
                         <td><%=i%>
                         </td>
                         <%
@@ -81,9 +82,13 @@
                         <td>${video.type}</td>
                         <td>${video.timeLength}</td>
                         <td>
-                            <a class="btn btn-info btn-xs" href="#">明细</a>
-                            <a class="btn btn-warning btn-xs" href="#">修改</a>
-                            <a class="btn btn-danger btn-xs" href="#">删除</a>
+                            <a class="btn btn-info btn-xs"
+                               href="${pageContext.request.contextPath}/videoDetail?id=${video.id}">明细</a>
+                            <a class="btn btn-warning btn-xs"
+                               href="${pageContext.request.contextPath}/videoToModify?id=${video.id}">修改</a>
+                            <a class="btn btn-danger btn-xs"
+                               href="${pageContext.request.contextPath}/videoRemove?id=${video.id}"
+                               onclick="return confirm('确定删除吗?')">删除</a>
                         </td>
                     </tr>
                 </c:forEach>

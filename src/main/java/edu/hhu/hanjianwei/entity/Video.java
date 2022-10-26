@@ -20,6 +20,31 @@ public class Video {
     private String coverPath;
     private String description;
 
+    public Video(int id, String name, String author, String type, LocalDateTime createTime, int timeLength, String videoPath, String coverPath, String description) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.type = type;
+        this.createTime = createTime;
+        this.timeLength = timeLength;
+        this.videoPath = videoPath;
+        this.coverPath = coverPath;
+        this.description = description;
+    }
+
+    public Video() {
+    }
+
+    public Video(int id, String name, String author, String type, LocalDateTime createTime, int timeLength, String description) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.type = type;
+        this.createTime = createTime;
+        this.timeLength = timeLength;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }
