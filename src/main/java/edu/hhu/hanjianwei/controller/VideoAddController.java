@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.UUID;
 
@@ -59,7 +60,12 @@ public class VideoAddController extends HttpServlet {
                     } else if (name.equals("type")) {
                         video.setType(value);
                     } else if (name.equals("createTime")) {
-                        video.setCreateTime(LocalDateTime.parse(value, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                        try {
+                            video.setCreateTime(LocalDateTime.parse(value, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                        } catch (DateTimeParseException e) {
+                            // 没有选择日期
+                            video.setCreateTime(LocalDateTime.now());
+                        }
                     } else if (name.equals("timeLength")) {
                         video.setTimeLength(Integer.parseInt(value));
                     } else if ("description".equals(name)) {
