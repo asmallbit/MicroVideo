@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserService {
     public int modifyUser(User user) {
         return userDao.updateUser(user);
     }
+
+    @Override
+    public int removeUserByAccount(String account) {
+        return userDao.deleteByAccount(account);
+    }
 }

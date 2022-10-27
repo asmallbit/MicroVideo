@@ -16,4 +16,6 @@ public interface UserService {
     List<User> queryAllUsers();
 
     int modifyUser(User user);
+
+    int removeUserByAccount(String account);
 }

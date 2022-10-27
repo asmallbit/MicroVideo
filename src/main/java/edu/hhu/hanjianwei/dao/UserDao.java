@@ -16,4 +16,6 @@ public interface UserDao {
     List<User> selectAllUsers();
 
     int updateUser(User user);
+
+    int deleteByAccount(String account);
 }

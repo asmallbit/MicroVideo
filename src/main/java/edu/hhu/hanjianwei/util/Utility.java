@@ -74,6 +74,12 @@ public class Utility {
                 req.getRequestDispatcher("/user/error.jsp").forward(req, resp);
             }
         }
+        // 密码过长, 最长为32位
+        if (password.trim().length() > 32) {
+            String string = "抱歉, 密码长度上限为32位, 请重新设置密码";
+            req.setAttribute("error", string);
+            req.getRequestDispatcher("/user/error.jsp").forward(req, resp);
+        }
         // 判断手机号码是否合法
         if (!Utility.isPhoneNumber(req.getParameter("phone"))) {
             String string = "抱歉, 您输入的手机号码不合法, 请重新检查您的输入";

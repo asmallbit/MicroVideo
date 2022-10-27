@@ -59,10 +59,8 @@
                     <div class="col-sm-10">
                         <select class="form-control" id="gender" name="gender">
                             <option value="true">=下拉选择=</option>
-                            <option value="true">Man</option>
-                            <option value="false">Woman</option>
-                            <option value="true">Trans Man</option>
-                            <option value="false">Trans Woman</option>
+                            <option value="true">男</option>
+                            <option value="false">女</option>
                         </select>
                     </div>
                 </div>

@@ -75,4 +75,15 @@ public class UserDaoImpl implements UserDao {
         }
         return -1;
     }
+
+    @Override
+    public int deleteByAccount(String account) {
+        String sql = "DELETE FROM t_user WHERE account = ?";
+        try {
+            return queryRunner.update(sql, account);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }
