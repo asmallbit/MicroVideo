@@ -26,10 +26,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-8">
         </div>
-        <div class="col-md-2">
-            欢饮您, ${sessionScope.user.account}
+        <div class="col-md-4">
+            欢迎您, ${sessionScope.user.account}, 点击<a
+                href="${pageContext.request.contextPath}/signOut?isUser=true">退出登录</a>
         </div>
     </div>
     <div class="row" style="margin-top: 20px">

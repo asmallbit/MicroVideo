@@ -13,9 +13,12 @@
 <body>
 <div class="container" style="margin-top: 30px">
     <div class="row">
-        <div class="col-md-12" align="center" style="margin-top: 30px">
-            <h3>${requestScope.play[2]}</h3>
+
+        <div class="col-md-10" align="center">
+            <h3>影片名称: ${requestScope.play[2]}, 回到<a href="${pageContext.request.contextPath}/user/video/list.jsp">主页
+            </a></h3>
         </div>
+
     </div>
     <div class="row" style="margin-top: 20px">
         <div class="col-md-2"></div>
